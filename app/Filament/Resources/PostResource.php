@@ -6,6 +6,8 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,38 +27,42 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(fn (callable $set, $state) => $set('slug', str($state)->slug('-'))),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('thumbnail')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('body')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\Toggle::make('active')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('published_at')
-                    ->required(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
-            ]);
+                Section::make()->schema([
+                    Grid::make(2)->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn (callable $set, $state) => $set('slug', str($state)->slug('-'))),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(255),
+                    ]),
+                    Forms\Components\RichEditor::make('body')
+                        ->required()
+                        ->columnSpanFull(),
+                    Forms\Components\Toggle::make('active')
+                        ->required(),
+                    Forms\Components\DateTimePicker::make('published_at'),
+                ])->columnSpan(['xl' => 8]),
+                Section::make()->schema([
+                    Forms\Components\FileUpload::make('thumbnail'),
+                    Forms\Components\Select::make('category_id')
+                        ->relationship('categories', 'title')
+                        ->multiple()
+                        ->required(),
+                ])->columnSpan(['xl' => 4])
+            ])->columns(12);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('thumbnail'),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('thumbnail')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
