@@ -9,7 +9,7 @@
     <meta name="description" content="">
 
     <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    @vite('resources/css/app.css')
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -71,7 +71,7 @@
         <div class="block sm:hidden">
             <a
                 href="#"
-                class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
+                class="md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
                 @click="open = !open"
             >
                 Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
