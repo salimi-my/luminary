@@ -20,7 +20,7 @@ class PostFactory extends Factory
         return [
             'title' => $title,
             'slug' => str($title)->slug('-'),
-            'thumbnail' => fake()->imageUrl(1024, 648, 'technology', true),
+            'thumbnail' => fake()->imageUrl(1024, 648),
             'body' => fake()->realText(5000),
             'active' => fake()->boolean,
             'published_at' => fake()->dateTime,
