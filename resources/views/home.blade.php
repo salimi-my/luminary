@@ -1,15 +1,15 @@
 <x-app-layout>
 
-<section class="w-full md:w-2/3 flex flex-col items-center px-3">
+    <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
-    @foreach ($posts as $post)
+        @foreach ($posts as $post)
         <x-post-item :post="$post" />
-    @endforeach
+        @endforeach
 
-    {{ $posts->onEachSide(1)->links() }}
+        {{ $posts->onEachSide(1)->links() }}
 
-</section>
+    </section>
 
-<x-sidebar />
+    <x-sidebar />
 
 </x-app-layout>
