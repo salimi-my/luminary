@@ -5,7 +5,7 @@
         <h3 class="text-xl font-semibold mb-3">All Categories</h3>
         @foreach ($categories as $category )
         <a href="{{ route('by-category', $category->slug) }}"
-            class="font-semibold block py-2 px-3 rounded {{ request('category')->slug == $category->slug ? 'bg-blue-600 text-white' : ''}}">
+            class="font-semibold block py-2 px-3 rounded {{ request('category')?->slug == $category->slug ? 'bg-blue-600 text-white' : ''}}">
             {{ $category->title }} ({{ $category->total }})
         </a>
         @endforeach
