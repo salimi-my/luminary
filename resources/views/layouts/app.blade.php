@@ -83,7 +83,8 @@
                 <a href="{{ route('by-category', $category->slug) }}"
                     class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">{{ $category->title }}</a>
                 @endforeach
-                <a href="#" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About Us</a>
+                <a href="{{ route('about-us') }}"
+                    class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About Us</a>
             </div>
         </div>
     </nav>
