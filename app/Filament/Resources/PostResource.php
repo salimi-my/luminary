@@ -41,6 +41,10 @@ class PostResource extends Resource
                     Forms\Components\RichEditor::make('body')
                         ->required()
                         ->columnSpanFull(),
+                    Forms\Components\TextInput::make('meta_title')
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('meta_description')
+                        ->columnSpanFull(),
                     Forms\Components\Toggle::make('active')
                         ->required(),
                     Forms\Components\DateTimePicker::make('published_at'),
