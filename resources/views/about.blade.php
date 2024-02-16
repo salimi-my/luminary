@@ -1,4 +1,5 @@
-<x-app-layout>
+<x-app-layout meta-title="About Us — Luminary"
+  meta-description="Explore our diverse perspectives and thought-provoking content covering a wide range of topics.">
 
   <section class="w-full flex flex-col items-center px-3">
 

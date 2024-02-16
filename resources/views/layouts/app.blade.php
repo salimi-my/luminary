@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luminary — Brilliant perspectives on diverse insights</title>
+    <title>{{ $metaTitle ?: 'Luminary — Brilliant perspectives on diverse insights' }}</title>
     <meta name="author" content="">
-    <meta name="description"
-        content="Discover brilliant perspectives on diverse insights at Luminary. Thought-provoking content covering a wide range of topics.">
+    <meta name="title" content="{{ $metaTitle ?: 'Luminary — Brilliant perspectives on diverse insights' }}">
+    <meta name="description" content="{{ $metaDescription }}">
 
     <!-- Tailwind -->
     @vite('resources/css/app.css')

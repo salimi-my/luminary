@@ -1,4 +1,5 @@
-<x-app-layout>
+<x-app-layout :meta-title="($post->meta_title ?: $post->title) . ' — Luminary'"
+    :meta-description="$post->meta_description ?: $post->excerpt() ?: $post->body">
 
     <!-- Post Section -->
     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
