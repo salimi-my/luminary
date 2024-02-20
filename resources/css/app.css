@@ -5,3 +5,7 @@
 pre {
     @apply p-4 bg-gray-800 rounded-lg text-white mb-4;
 }
+
+.font-family-karla {
+    font-family: karla;
+}
