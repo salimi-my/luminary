@@ -28,7 +28,7 @@
                     {!! $post->body !!}
                 </div>
 
-                <livewire:like-dislike />
+                <livewire:like-dislike :post="$post" />
             </div>
         </article>
 
