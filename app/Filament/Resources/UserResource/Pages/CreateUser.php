@@ -16,6 +16,13 @@ class CreateUser extends CreateRecord
         return $this->getResource()::getUrl('index');
     }
 
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['email_verified_at'] = now();
+
+        return $data;
+    }
+
     protected function handleRecordCreation(array $data): Model
     {
         /** @var \App\Models\User $user */
