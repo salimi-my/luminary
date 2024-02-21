@@ -24,7 +24,11 @@
                     By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>,
                     Published on {{ $post->postDate() }}
                 </p>
-                {!! $post->body !!}
+                <div>
+                    {!! $post->body !!}
+                </div>
+
+                <livewire:like-dislike />
             </div>
         </article>
 
