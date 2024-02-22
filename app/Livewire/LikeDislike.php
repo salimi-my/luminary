@@ -25,7 +25,22 @@ class LikeDislike extends Component
             ->where('is_like', '=', false)
             ->count();
 
-        return view('livewire.like-dislike', compact('likes', 'dislikes'));
+        $hasLikeDislike = null;
+
+        /** @var \App\Models\User $user */
+        $user = request()->user();
+
+        if ($user) {
+            $likeDislike = ModelsLikeDislike::where('post_id', '=', $this->post->id)
+                ->where('user_id', '=', $user->id)
+                ->first();
+
+            if ($likeDislike) {
+                $hasLikeDislike = !!$likeDislike->is_like;
+            }
+        }
+
+        return view('livewire.like-dislike', compact('likes', 'dislikes', 'hasLikeDislike'));
     }
 
     public function likeDislike($like = true)
