@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
-use Carbon\Carbon;
+use App\Models\PostView;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -44,38 +44,75 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Post $post, Request $request)
     {
-        if (!$post->active || $post->published_at > Carbon::now()) {
+        // Check if the post is active and has been published
+        if (!$post->active || $post->published_at > now()) {
             throw new NotFoundHttpException();
         }
 
-        $next = Post::query()
-            ->where('active', true)
-            ->where('published_at', '<=', Carbon::now())
+        // Get the next post based on the publication date
+        $next = Post::where('active', true)
+            ->where('published_at', '<=', now())
             ->where('published_at', '<', $post->published_at)
             ->orderBy('published_at', 'desc')
-            ->limit(1)
             ->first();
 
-        $prev = Post::query()
-            ->where('active', true)
-            ->where('published_at', '<=', Carbon::now())
+        // Get the previous post based on the publication date
+        $prev = Post::where('active', true)
+            ->where('published_at', '<=', now())
             ->where('published_at', '>', $post->published_at)
             ->orderBy('published_at', 'asc')
-            ->limit(1)
             ->first();
 
+        // Get the current user
+        $user = $request->user();
+
+        // Record the post view if the user has viewed the post
+        if ($user) {
+            $viewed = PostView::where('post_id', $post->id)
+                ->where('user_id', $user->id)
+                ->where('created_at', '>', now()->subHour())
+                ->exists();
+
+            if (!$viewed) {
+                PostView::create([
+                    'post_id' => $post->id,
+                    'user_id' => $user->id,
+                    'ip_address' => $request->ip(),
+                    'user_agent' => $request->userAgent(),
+                ]);
+            }
+        }
+        // Record the post view if the user is a guest
+        else {
+            $viewed = PostView::where('post_id', $post->id)
+                ->where('user_id', null)
+                ->where('ip_address', $request->ip())
+                ->where('user_agent', $request->userAgent())
+                ->where('created_at', '>', now()->subHour())
+                ->exists();
+
+            if (!$viewed) {
+                PostView::create([
+                    'post_id' => $post->id,
+                    'user_id' => null,
+                    'ip_address' => $request->ip(),
+                    'user_agent' => $request->userAgent(),
+                ]);
+            }
+        }
+
+        // Return the view with post, next, and previous post data
         return view('post.view', compact('post', 'next', 'prev'));
     }
 
     public function byCategory(Category $category)
     {
-        $posts = Post::query()
-            ->join('category_post', 'posts.id', '=', 'category_post.post_id')
+        $posts = Post::join('category_post', 'posts.id', '=', 'category_post.post_id')
             ->where('category_post.category_id', $category->id)
             ->where('posts.active', true)
-            ->whereDate('posts.published_at', '<=', Carbon::now())
+            ->whereDate('posts.published_at', '<=', now())
             ->orderBy('posts.published_at', 'desc')
             ->paginate(5);
 
