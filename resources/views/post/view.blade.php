@@ -22,7 +22,7 @@
                 </h1>
                 <p href="#" class="text-sm pb-8">
                     By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>,
-                    Published on {{ $post->postDate() }}
+                    Published on {{ $post->postDate() }} | {{ $post->post_read_time }}
                 </p>
                 <div>
                     {!! $post->body !!}

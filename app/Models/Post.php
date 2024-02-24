@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -55,5 +56,17 @@ class Post extends Model
         }
 
         return '/storage/' . $this->thumbnail;
+    }
+
+    public function postReadTime(): Attribute
+    {
+        return new Attribute(
+            get: function ($value, $attributes) {
+                $words = str_word_count(strip_tags($attributes['body']));
+                $minutes = max(1, ceil($words / 200));
+
+                return $minutes . ' ' . str('min')->plural($minutes) . ' read';
+            }
+        );
     }
 }
