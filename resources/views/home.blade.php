@@ -1,11 +1,11 @@
 <x-app-layout
     meta-description="Discover brilliant perspectives on diverse insights at Luminary. Thought-provoking content covering a wide range of topics.">
 
-    <div class="container max-w-5xl mx-auto py-6">
+    <div class="container max-w-5xl mx-auto py-6 max-xl:px-4">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid md:grid-cols-3 gap-4">
             <!-- Latest posts -->
-            <div class="col-span-2">
+            <div class="md:col-span-2">
                 <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
                     Latest Post
                 </h2>
@@ -53,6 +53,12 @@
             <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
                 Recommended Posts
             </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                @foreach($recommendedPosts as $post)
+                <x-post-item :post="$post" :show-author="false" />
+                @endforeach
+            </div>
         </div>
 
         <!-- Latest categories -->

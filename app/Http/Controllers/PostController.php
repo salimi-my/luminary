@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\LikeDislike;
 use App\Models\Post;
 use App\Models\PostView;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -46,7 +48,69 @@ class PostController extends Controller
             ->limit(5)
             ->get();
 
-        return view('home', compact('latestPost', 'popularPosts'));
+        // Get logged in user
+        $user = auth()->user();
+
+        // If user exist, show recommended posts based on user likes
+        if ($user) {
+            $userLikesCategory = LikeDislike::join('category_post', 'like_dislikes.post_id', '=', 'category_post.post_id')
+                ->where('like_dislikes.is_like', true)
+                ->where('like_dislikes.user_id', $user->id)
+                ->select('category_post.category_id', 'category_post.post_id');
+
+            $recommendedPosts = Post::select('posts.*')
+                ->leftJoin('category_post', 'posts.id', '=', 'category_post.post_id')
+                ->leftJoinSub($userLikesCategory, 'userLikesCategory', function (JoinClause $join) {
+                    $join->on('userLikesCategory.category_id', '=', 'category_post.category_id')
+                        ->on('userLikesCategory.post_id', '<>', 'category_post.post_id');
+                })
+                ->where('posts.active', '=', true)
+                ->whereDate('posts.published_at', '<=', now())
+                ->groupBy([
+                    'posts.id',
+                    'posts.title',
+                    'posts.slug',
+                    'posts.thumbnail',
+                    'posts.body',
+                    'posts.active',
+                    'posts.published_at',
+                    'posts.user_id',
+                    'posts.created_at',
+                    'posts.updated_at',
+                    'posts.meta_title',
+                    'posts.meta_description',
+                ])
+                ->whereRaw('posts.id <> userLikesCategory.post_id')
+                ->limit(3)
+                ->get();
+        }
+
+        // If user not exist, show recommended posts based on views count
+        else {
+            $recommendedPosts = Post::join('post_views', 'posts.id', '=', 'post_views.post_id')
+                ->selectRaw('posts.*, COUNT(post_views.id) as views_count')
+                ->where('posts.active', '=', true)
+                ->whereDate('posts.published_at', '<=', now())
+                ->groupBy([
+                    'posts.id',
+                    'posts.title',
+                    'posts.slug',
+                    'posts.thumbnail',
+                    'posts.body',
+                    'posts.active',
+                    'posts.published_at',
+                    'posts.user_id',
+                    'posts.created_at',
+                    'posts.updated_at',
+                    'posts.meta_title',
+                    'posts.meta_description',
+                ])
+                ->orderBy('views_count', 'desc')
+                ->limit(3)
+                ->get();
+        }
+
+        return view('home', compact('latestPost', 'popularPosts', 'recommendedPosts'));
     }
 
     /**
