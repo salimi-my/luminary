@@ -22,7 +22,31 @@ class PostController extends Controller
             ->orderBy('published_at', 'desc')
             ->first();
 
-        return view('home', compact('latestPost'));
+        // Top 5 popular posts based on likes count
+        $popularPosts = Post::join('like_dislikes', 'posts.id', '=', 'like_dislikes.post_id')
+            ->selectRaw('posts.*, COUNT(like_dislikes.id) as likes_count')
+            ->where('posts.active', '=', true)
+            ->whereDate('posts.published_at', '<=', now())
+            ->where('like_dislikes.is_like', '=', true)
+            ->groupBy([
+                'posts.id',
+                'posts.title',
+                'posts.slug',
+                'posts.thumbnail',
+                'posts.body',
+                'posts.active',
+                'posts.published_at',
+                'posts.user_id',
+                'posts.created_at',
+                'posts.updated_at',
+                'posts.meta_title',
+                'posts.meta_description',
+            ])
+            ->orderBy('likes_count', 'desc')
+            ->limit(5)
+            ->get();
+
+        return view('home', compact('latestPost', 'popularPosts'));
     }
 
     /**
