@@ -16,13 +16,13 @@ class PostController extends Controller
      */
     public function index(): View
     {
-        $posts = Post::query()
-            ->where('active', true)
-            ->where('published_at', '!=', NULL)
+        // Latest post
+        $latestPost = Post::where('active', '=', true)
+            ->whereDate('published_at', '<=', now())
             ->orderBy('published_at', 'desc')
-            ->paginate(5);
+            ->first();
 
-        return view('home', compact('posts'));
+        return view('home', compact('latestPost'));
     }
 
     /**
