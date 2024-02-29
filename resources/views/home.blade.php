@@ -40,7 +40,7 @@
                         </div>
                         <a href="{{ route('view', $post) }}"
                             class="text-xs uppercase text-gray-800 hover:text-black">Continue
-                            Reading <i class="fas fa-arrow-right"></i>
+                            Reading <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
             <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
                 <a href="{{route('by-category', $category)}}">
                     {{$category->title}} POSTS
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </h2>
 

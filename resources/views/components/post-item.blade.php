@@ -25,7 +25,7 @@
             {{ $post->excerpt() }}
         </a>
         <a href="{{ route('view', $post) }}" class="uppercase text-gray-800 hover:text-black">
-            Continue Reading <i class="fas fa-arrow-right"></i>
+            Continue Reading <i class="fa-solid fa-arrow-right"></i>
         </a>
     </div>
 </article>

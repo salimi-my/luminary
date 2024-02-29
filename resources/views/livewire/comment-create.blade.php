@@ -14,6 +14,9 @@
                 class="rounded-md bg-transparent px-3.5 py-2 text-center text-sm font-semibold text-black hover:bg-gray-200/50">
                 Cancel
             </button>
+            <div wire:loading>
+
+            </div>
         </div>
     </form>
 </div>

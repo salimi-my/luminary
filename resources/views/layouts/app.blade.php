@@ -13,10 +13,6 @@
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
     </style>
 
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
-        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -36,16 +32,16 @@
 
             <div class="flex items-center text-lg no-underline text-white pr-6">
                 <a class="" href="#">
-                    <i class="fab fa-facebook"></i>
+                    <i class="fa-brands fa-facebook"></i>
                 </a>
                 <a class="pl-6" href="#">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fa-brands fa-instagram"></i>
                 </a>
                 <a class="pl-6" href="#">
-                    <i class="fab fa-twitter"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
                 </a>
                 <a class="pl-6" href="#">
-                    <i class="fab fa-linkedin"></i>
+                    <i class="fa-brands fa-linkedin"></i>
                 </a>
             </div>
         </div>
@@ -69,7 +65,7 @@
         <div class="block sm:hidden">
             <a href="#" class="md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
                 @click="open = !open">
-                Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
+                Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fa-solid ml-2"></i>
             </a>
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
