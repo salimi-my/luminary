@@ -2,7 +2,7 @@
     :meta-description="$post->meta_description ?: $post->excerpt() ?: $post->body">
 
     <!-- Post Section -->
-    <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+    <section class="w-full md:w-2/3 flex flex-col px-3">
 
         <article class="flex flex-col shadow my-4">
             <!-- Article Image -->
@@ -61,6 +61,8 @@
                 @endif
             </div>
         </div>
+
+        <livewire:comments :post="$post" />
 
     </section>
 
