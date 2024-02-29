@@ -6,17 +6,19 @@
                 :rows="focused ? '3' : '2'" placeholder="Leave a comment"></textarea>
         </div>
         <div :class="focused ? 'flex items-center gap-2' : 'hidden'">
-            <button type="submit"
+            <button wire:loading.remove type="submit"
                 class="rounded-md bg-blue-600 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
                 Submit
+            </button>
+            <button wire:loading type="button"
+                class="rounded-md bg-blue-600 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-80 cursor-not-allowed"
+                disabled>
+                <i class="fa-solid fa-circle-notch animate-spin mr-1"></i> Submitting
             </button>
             <button @click="focused = false" type="button"
                 class="rounded-md bg-transparent px-3.5 py-2 text-center text-sm font-semibold text-black hover:bg-gray-200/50">
                 Cancel
             </button>
-            <div wire:loading>
-
-            </div>
         </div>
     </form>
 </div>
