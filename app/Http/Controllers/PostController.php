@@ -25,7 +25,7 @@ class PostController extends Controller
             ->first();
 
         // Top 5 popular posts based on likes count
-        $popularPosts = Post::join('like_dislikes', 'posts.id', '=', 'like_dislikes.post_id')
+        $popularPosts = Post::leftJoin('like_dislikes', 'posts.id', '=', 'like_dislikes.post_id')
             ->selectRaw('posts.*, COUNT(like_dislikes.id) as likes_count')
             ->where('posts.active', '=', true)
             ->whereDate('posts.published_at', '<=', now())
@@ -44,9 +44,12 @@ class PostController extends Controller
                 'posts.meta_title',
                 'posts.meta_description',
             ])
-            ->orderBy('likes_count', 'desc')
-            ->limit(5)
+            ->orderByRaw('likes_count DESC, posts.id')
+            ->take(5)
             ->get();
+
+        // Fill in the remaining rows if less than 5
+        $popularPosts = $popularPosts->merge(Post::whereNotIn('id', $popularPosts->pluck('id')->all())->limit(5 - $popularPosts->count())->get());
 
         // Get logged in user
         $user = auth()->user();
