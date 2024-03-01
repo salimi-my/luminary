@@ -49,7 +49,11 @@ class PostController extends Controller
             ->get();
 
         // Fill in the remaining rows if less than 5
-        $popularPosts = $popularPosts->merge(Post::whereNotIn('id', $popularPosts->pluck('id')->all())->limit(5 - $popularPosts->count())->get());
+        $popularPosts = $popularPosts->merge(
+            Post::whereNotIn('id', $popularPosts->pluck('id')->all())
+                ->limit(5 - $popularPosts->count())
+                ->get()
+        );
 
         // Get logged in user
         $user = auth()->user();
@@ -112,6 +116,14 @@ class PostController extends Controller
                 ->limit(3)
                 ->get();
         }
+
+        // Fill in remaining recommended posts if less than 3
+        $recommendedPosts = $recommendedPosts->merge(
+            Post::whereNotIn('id', $recommendedPosts->pluck('id')->all())
+                ->inRandomOrder()
+                ->limit(3 - $recommendedPosts->count())
+                ->get()
+        );
 
         // Recent categories posts
         $categories = Category::withWhereHas('posts', function ($query) {
