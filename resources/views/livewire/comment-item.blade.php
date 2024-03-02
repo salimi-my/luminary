@@ -17,7 +17,8 @@
                 <a href="#" class="text-sm text-gray-400 hover:text-blue-500">Reply</a>
                 @if ($comment->user_id == Auth::id())
                 <a href="#" class="text-sm text-gray-400 hover:text-blue-500">Edit</a>
-                <a wire:click.prevent="deleteComment" wire:loading.remove href=""
+                <a wire:click.prevent="deleteComment" wire:loading.remove
+                    wire:confirm="Are you sure you want to delete this comment?" href=""
                     class="text-sm text-gray-400 hover:text-red-500">Delete</a>
                 <p wire:loading wire:target="deleteComment" class="text-sm text-red-500">Deleting...</p>
                 @endif
