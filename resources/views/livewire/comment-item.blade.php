@@ -10,16 +10,16 @@
                 </a>
                 - <span class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
             </div>
-            <div class="text-gray-600">
+            <div class="">
                 {{ $comment->content }}
             </div>
             <div class="flex items-center gap-2">
-                <a href="#" class="text-sm text-blue-600">Reply</a>
+                <a href="#" class="text-sm text-gray-400 hover:text-blue-500">Reply</a>
                 @if ($comment->user_id == Auth::id())
-                <span>&#8226;</span>
-                <a href="#" class="text-sm text-green-600">Edit</a>
-                <span>&#8226;</span>
-                <a href="#" class="text-sm text-red-600">Delete</a>
+                <a href="#" class="text-sm text-gray-400 hover:text-blue-500">Edit</a>
+                <a wire:click.prevent="deleteComment" wire:loading.remove href=""
+                    class="text-sm text-gray-400 hover:text-red-500">Delete</a>
+                <p wire:loading wire:target="deleteComment" class="text-sm text-red-500">Deleting...</p>
                 @endif
             </div>
         </div>

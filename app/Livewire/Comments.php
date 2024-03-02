@@ -25,7 +25,7 @@ class Comments extends Component
         return view('livewire.comments', compact('comments'));
     }
 
-    #[On('commentCreated')]
+    #[On(['commentCreated', 'commentDeleted'])]
     public function updateCommentList()
     {
         $this->render();
