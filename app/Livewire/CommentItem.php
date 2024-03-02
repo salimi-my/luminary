@@ -4,10 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Comment;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class CommentItem extends Component
 {
     public Comment $comment;
+
+    public $editing = false;
 
     public function mount(Comment $comment)
     {
@@ -35,5 +38,16 @@ class CommentItem extends Component
 
         // Dispatch the event
         $this->dispatch('commentDeleted');
+    }
+
+    public function startEditComment()
+    {
+        $this->editing = true;
+    }
+
+    #[On(['cancelEditing', 'commentUpdated'])]
+    public function stopEditComment()
+    {
+        $this->editing = false;
     }
 }

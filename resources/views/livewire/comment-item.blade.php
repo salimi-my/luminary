@@ -10,13 +10,18 @@
                 </a>
                 - <span class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
             </div>
-            <div class="">
+            @if ($editing)
+            <livewire:comment-create :comment-model="$comment" />
+            @else
+            <div>
                 {{ $comment->content }}
             </div>
+            @endif
             <div class="flex items-center gap-2">
                 <a href="#" class="text-sm text-gray-400 hover:text-blue-500">Reply</a>
                 @if ($comment->user_id == Auth::id())
-                <a href="#" class="text-sm text-gray-400 hover:text-blue-500">Edit</a>
+                <a wire:click.prevent="startEditComment" href=""
+                    class="text-sm text-gray-400 hover:text-blue-500">Edit</a>
                 <a wire:click.prevent="deleteComment" wire:loading.remove
                     wire:confirm="Are you sure you want to delete this comment?" href=""
                     class="text-sm text-gray-400 hover:text-red-500">Delete</a>
