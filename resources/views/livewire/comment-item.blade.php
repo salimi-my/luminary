@@ -5,7 +5,9 @@
         </div>
         <div class="flex-1">
             <div>
-                <a href="#" class="font-semibold text-blue-600">John Doe</a>
+                <a href="#" class="font-semibold text-blue-600">
+                    {{ $comment->user->name }}
+                </a>
                 - <span class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
             </div>
             <div class="text-gray-600">
