@@ -21,6 +21,15 @@ class CommentItem extends Component
 
     public function deleteComment()
     {
+        $user = auth()->user();
+        if (!$user) {
+            return $this->redirect('/login');
+        }
+
+        if ($this->comment->user_id != $user->id) {
+            return response('You are not allowed to perform this action', 403);
+        }
+
         // Delete the comment
         $this->comment->delete();
 
