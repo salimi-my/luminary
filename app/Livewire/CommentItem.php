@@ -56,4 +56,10 @@ class CommentItem extends Component
     {
         $this->replying = true;
     }
+
+    #[On(['commentCreated'])]
+    public function stopReplyComment()
+    {
+        $this->replying = false;
+    }
 }

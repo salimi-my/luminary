@@ -29,7 +29,7 @@
         </div>
 
         @if($replying)
-        <livewire:comment-create />
+        <livewire:comment-create :post="$comment->post" :parent-comment="$comment" />
         @endif
     </div>
 </div>

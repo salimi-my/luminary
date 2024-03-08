@@ -12,12 +12,15 @@ class CommentCreate extends Component
 
     public Post $post;
     public ?Comment $commentModel = null;
+    public ?Comment $parentComment = null;
 
-    public function mount(Post $post, $commentModel = null)
+    public function mount(Post $post, $commentModel = null, $parentComment = null)
     {
         $this->post = $post;
         $this->commentModel = $commentModel;
         $this->content = $commentModel ? $commentModel->content : '';
+
+        $this->parentComment = $parentComment;
     }
 
     public function render()
@@ -50,6 +53,7 @@ class CommentCreate extends Component
                 'content' => $this->content,
                 'post_id' => $this->post->id,
                 'user_id' => $user->id,
+                'parent_id' => $this->parentComment?->id
             ]);
 
             // Dispatch the event

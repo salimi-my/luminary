@@ -1,11 +1,15 @@
 <div>
     <form wire:submit.prevent="createComment" x-data="{
-            focused: false,
+            focused: {{ $parentComment ? 'true' : 'false' }},
             isEdit: {{ $commentModel ? 'true' : 'false' }},
             init() {
-                if (this.isEdit) {
+                if (this.isEdit || this.focused) {
                     this.$refs.input.focus()
                 }
+
+                $wire.on('commentCreated', () => {
+                    this.focused = false;
+                })
             }
         }" class="my-4">
         <div class="mb-2">
