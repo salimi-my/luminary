@@ -11,6 +11,7 @@ class CommentItem extends Component
     public Comment $comment;
 
     public $editing = false;
+    public $replying = false;
 
     public function mount(Comment $comment)
     {
@@ -49,5 +50,10 @@ class CommentItem extends Component
     public function stopEditComment()
     {
         $this->editing = false;
+    }
+
+    public function startReplyComment()
+    {
+        $this->replying = true;
     }
 }
