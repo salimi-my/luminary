@@ -19,7 +19,7 @@ class Comments extends Component
     public function render()
     {
         $comments = Comment::where('post_id', '=', $this->post->id)
-            ->with(['post', 'user',])
+            ->with(['post', 'user', 'replies'])
             ->where('parent_id', '=', null)
             ->orderBy('created_at', 'desc')
             ->get();
