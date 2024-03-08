@@ -50,6 +50,7 @@ class CommentItem extends Component
     public function stopEditComment()
     {
         $this->editing = false;
+        $this->replying = false;
     }
 
     public function startReplyComment()
