@@ -1,7 +1,7 @@
 <x-app-layout meta-title="About Us — Luminary"
   meta-description="Explore our diverse perspectives and thought-provoking content covering a wide range of topics.">
 
-  <section class="w-full max-w-7xl mx-auto flex flex-col items-center px-3">
+  <section class="w-full max-w-7xl mx-auto flex flex-col items-center max-xl:px-3">
 
     <article class="flex flex-col shadow my-4">
       <!-- Article Image -->

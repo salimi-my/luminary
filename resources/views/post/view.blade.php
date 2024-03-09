@@ -1,7 +1,7 @@
 <x-app-layout :meta-title="($post->meta_title ?: $post->title) . ' — Luminary'"
     :meta-description="$post->meta_description ?: $post->excerpt() ?: $post->body">
 
-    <div class="w-full max-w-7xl mx-auto flex py-6 gap-4">
+    <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row py-6 gap-4 max-xl:px-3">
         <!-- Post Section -->
         <section class="w-full md:w-2/3 flex flex-col">
 
