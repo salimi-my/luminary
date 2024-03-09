@@ -50,7 +50,9 @@ class PostController extends Controller
 
         // Fill in the remaining rows if less than 5
         $popularPosts = $popularPosts->merge(
-            Post::whereNotIn('id', $popularPosts->pluck('id')->all())
+            Post::where('active', '=', true)
+                ->whereDate('published_at', '<=', now())
+                ->whereNotIn('id', $popularPosts->pluck('id')->all())
                 ->limit(5 - $popularPosts->count())
                 ->get()
         );
@@ -119,7 +121,9 @@ class PostController extends Controller
 
         // Fill in remaining recommended posts if less than 3
         $recommendedPosts = $recommendedPosts->merge(
-            Post::whereNotIn('id', $recommendedPosts->pluck('id')->all())
+            Post::where('active', '=', true)
+                ->whereDate('published_at', '<=', now())
+                ->whereNotIn('id', $recommendedPosts->pluck('id')->all())
                 ->inRandomOrder()
                 ->limit(3 - $recommendedPosts->count())
                 ->get()
