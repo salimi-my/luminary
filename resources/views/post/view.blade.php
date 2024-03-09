@@ -63,7 +63,10 @@
                 </div>
             </div>
 
-            <livewire:comments :post="$post" />
+            <div class="mt-6">
+                <h3 class="text-xl font-bold">Leave a comment</h3>
+                <livewire:comments :post="$post" />
+            </div>
 
         </section>
 
