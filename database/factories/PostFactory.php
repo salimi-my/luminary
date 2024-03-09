@@ -17,11 +17,17 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $title = fake()->text(40);
+
+        $body = '';
+        for ($i = 0; $i < 5; $i++) {
+            $body .= '<p>' . fake()->paragraph(5) . '</p>';
+        }
+
         return [
             'title' => $title,
             'slug' => str($title)->slug('-'),
-            'thumbnail' => $this->faker->imageUrl(1024, 648),
-            'body' => fake()->realText(5000),
+            'thumbnail' => $this->faker->image('public/storage', 1024, 648, false),
+            'body' => $body,
             'active' => fake()->boolean,
             'published_at' => fake()->dateTime,
             'user_id' => 1
