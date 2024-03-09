@@ -3,9 +3,9 @@
 
     <div class="container max-w-7xl mx-auto py-6 max-xl:px-4">
 
-        <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <div class="grid md:grid-cols-5 gap-4 mb-6">
             <!-- Latest posts -->
-            <div class="md:col-span-2">
+            <div class="md:col-span-3">
                 <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
                     Latest Post
                 </h2>
@@ -14,14 +14,15 @@
             </div>
 
             <!-- Top 5 popular posts -->
-            <div>
-                <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+            <div class="md:col-span-2">
+                <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-4">
                     Popular Posts
                 </h2>
                 @foreach($popularPosts as $post)
-                <div class="grid grid-cols-4 gap-2 my-4 bg-white shadow p-2">
+                <div class="grid grid-cols-4 gap-4 mb-4 bg-white shadow p-2">
                     <a href="{{ route('view', $post) }}" class="pt-1">
-                        <img src="{{ $post->postThumbnail() }}" alt="{{ $post->title }}" />
+                        <img src="{{ $post->postThumbnail() }}" alt="{{ $post->title }}"
+                            class="aspect-[4/3] object-cover" />
                     </a>
                     <div class="col-span-3">
                         <a href="{{ route('view', $post) }}">

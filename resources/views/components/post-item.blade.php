@@ -21,7 +21,7 @@
             $post->postDate() }} | {{ $post->post_read_time }}
         </p>
         @endif
-        <a href="{{ route('view', $post) }}" class="pb-6 min-h-[144px]">
+        <a href="{{ route('view', $post) }}" class="pb-6 {{ $showAuthor ? '' : 'min-h-[144px]' }}">
             <span class="line-clamp-5">
                 {{ $post->excerpt() }}
             </span>
