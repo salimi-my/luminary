@@ -15,7 +15,7 @@
         <p class="text-xl font-semibold pb-5">
             {{ \App\Models\TextWidget::getTitle('about-us-sidebar') }}
         </p>
-        <p class="pb-2">
+        <p class="pb-2 text-pretty">
             {!! \App\Models\TextWidget::getContent('about-us-sidebar') !!}
         </p>
         <a href="{{ route('about-us') }}"
