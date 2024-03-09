@@ -76,12 +76,16 @@
             <div
                 class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-between text-sm font-bold uppercase mt-0 px-6 py-2">
                 <div>
-                    <a href="{{ route('home') }}" class="hover:bg-primary rounded py-2 px-4 mx-2">Home</a>
+                    <a href="{{ route('home') }}"
+                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">Home</a>
                     @foreach ($categories as $category)
                     <a href="{{ route('by-category', $category->slug) }}"
-                        class="hover:bg-primary rounded py-2 px-4 mx-2">{{ $category->title }}</a>
+                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">{{
+                        $category->title }}</a>
                     @endforeach
-                    <a href="{{ route('about-us') }}" class="hover:bg-primary rounded py-2 px-4 mx-2">About Us</a>
+                    <a href="{{ route('about-us') }}"
+                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">About
+                        Us</a>
                 </div>
 
                 <div class="flex items-center">
@@ -95,7 +99,8 @@
                     <div class="flex sm:items-center sm:ms-6">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
-                                <button class="hover:bg-primary flex items-center rounded py-2 px-4 mx-2">
+                                <button
+                                    class="hover:bg-primary transition-color ease-in-out duration-200 flex items-center rounded py-2 px-4 mx-2">
                                     <div>{{ Auth::user()->name }}</div>
 
                                     <div class="ms-1">
@@ -127,9 +132,10 @@
                         </x-dropdown>
                     </div>
                     @else
-                    <a href="{{ route('login') }}" class="hover:bg-primary rounded py-2 px-4 mx-2">Login</a>
+                    <a href="{{ route('login') }}"
+                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">Login</a>
                     <a href="{{ route('register') }}"
-                        class="bg-primary hover:bg-yellow-400 rounded py-2 px-4 mx-2">Register</a>
+                        class="bg-primary hover:bg-yellow-400 transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">Register</a>
                     @endauth
                 </div>
             </div>

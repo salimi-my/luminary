@@ -19,7 +19,7 @@
             {!! \App\Models\TextWidget::getContent('about-us-sidebar') !!}
         </p>
         <a href="{{ route('about-us') }}"
-            class="w-full bg-primary font-bold text-sm uppercase rounded hover:bg-yellow-400 flex items-center justify-center px-2 py-3 mt-4">
+            class="w-full bg-primary transition-color ease-in-out duration-200 font-bold text-sm uppercase rounded hover:bg-yellow-400 flex items-center justify-center px-2 py-3 mt-4">
             Get to know us
         </a>
     </div>

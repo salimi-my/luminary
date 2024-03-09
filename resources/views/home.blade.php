@@ -22,7 +22,8 @@
                 </h2>
                 @foreach($popularPosts as $post)
                 <div class="grid grid-cols-4 gap-4 mb-4 bg-white shadow p-2">
-                    <a href="{{ route('view', $post) }}" class="pt-1">
+                    <a href="{{ route('view', $post) }}"
+                        class="pt-1 transition-opacity ease-in-out duration-300 hover:opacity-75">
                         <img src="{{ $post->postThumbnail() }}" alt="{{ $post->title }}"
                             class="aspect-[4/3] object-cover" />
                     </a>
@@ -42,7 +43,7 @@
                             {{ $post->excerpt() }}
                         </div>
                         <a href="{{ route('view', $post) }}"
-                            class="text-xs uppercase text-gray-800 hover:text-black">Continue
+                            class="text-xs uppercase text-black transition-color ease-in-out duration-100 hover:text-yellow-500">Continue
                             Reading <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>

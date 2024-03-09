@@ -1,6 +1,6 @@
 <article class="bg-white flex flex-col shadow my-4">
     <!-- Article Image -->
-    <a href="{{ route('view', $post) }}" class="hover:opacity-75">
+    <a href="{{ route('view', $post) }}" class="transition-opacity ease-in-out duration-300 hover:opacity-75">
         <img src="{{ $post->postThumbnail() }}" alt="{{ $post->title }}" class="aspect-[4/3] object-cover">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
@@ -26,7 +26,8 @@
                 {{ $post->excerpt() }}
             </span>
         </a>
-        <a href="{{ route('view', $post) }}" class="uppercase text-gray-800 hover:text-black">
+        <a href="{{ route('view', $post) }}"
+            class="uppercase text-black transition-color ease-in-out duration-100 hover:text-yellow-500">
             Continue Reading <i class="fa-solid fa-arrow-right"></i>
         </a>
     </div>
