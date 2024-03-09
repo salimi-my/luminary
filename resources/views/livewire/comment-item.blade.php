@@ -4,7 +4,7 @@
     </div>
     <div class="flex-1">
         <div>
-            <a href="#" class="font-semibold text-blue-600">
+            <a href="#" class="font-semibold text-yellow-500">
                 {{ $comment->user->name }}
             </a>
             - <span class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
@@ -18,9 +18,10 @@
         @endif
         <div class="flex items-center gap-2">
             <a wire:click.prevent="startReplyComment" href="#"
-                class="text-sm text-gray-400 hover:text-blue-500">Reply</a>
+                class="text-sm text-gray-400 hover:text-yellow-500">Reply</a>
             @if ($comment->user_id == Auth::id())
-            <a wire:click.prevent="startEditComment" href="" class="text-sm text-gray-400 hover:text-blue-500">Edit</a>
+            <a wire:click.prevent="startEditComment" href=""
+                class="text-sm text-gray-400 hover:text-yellow-500">Edit</a>
             <a wire:click.prevent="deleteComment" wire:loading.remove
                 wire:confirm="Are you sure you want to delete this comment?" href=""
                 class="text-sm text-gray-400 hover:text-red-500">Delete</a>

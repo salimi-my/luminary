@@ -6,7 +6,8 @@
         <div class="grid md:grid-cols-5 gap-4 mb-6">
             <!-- Latest posts -->
             <div class="md:col-span-3">
-                <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+                <h2
+                    class="text-lg sm:text-xl font-bold text-yellow-500 uppercase pb-1 border-b-2 border-yellow-500 mb-3">
                     Latest Post
                 </h2>
 
@@ -15,7 +16,8 @@
 
             <!-- Top 5 popular posts -->
             <div class="md:col-span-2">
-                <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-4">
+                <h2
+                    class="text-lg sm:text-xl font-bold text-yellow-500 uppercase pb-1 border-b-2 border-yellow-500 mb-4">
                     Popular Posts
                 </h2>
                 @foreach($popularPosts as $post)
@@ -31,7 +33,7 @@
                         <div class="flex gap-2 mb-2">
                             @foreach($post->categories as $category)
                             <a href="{{ route('by-category', $category->slug) }}"
-                                class="bg-blue-500 text-white px-2 rounded text-xs font-medium uppercase">
+                                class="bg-yellow-500 text-white px-2 rounded text-xs font-medium uppercase">
                                 {{ $category->title }}
                             </a>
                             @endforeach
@@ -51,7 +53,7 @@
 
         <!-- Recommended posts -->
         <div>
-            <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+            <h2 class="text-lg sm:text-xl font-bold text-yellow-500 uppercase pb-1 border-b-2 border-yellow-500 mb-3">
                 Recommended Posts
             </h2>
 
@@ -65,7 +67,7 @@
         <!-- Recent categories -->
         @foreach($categories as $category)
         <div>
-            <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+            <h2 class="text-lg sm:text-xl font-bold text-yellow-500 uppercase pb-1 border-b-2 border-yellow-500 mb-3">
                 <a href="{{route('by-category', $category)}}">
                     {{$category->title}} POSTS
                     <i class="fa-solid fa-arrow-right"></i>

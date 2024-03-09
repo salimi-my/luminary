@@ -7,7 +7,7 @@
         <div class="flex gap-4 min-h-[36px]">
             @foreach($post->categories as $category)
             <a href="{{ route('by-category', $category->slug) }}"
-                class="text-blue-700 text-sm font-bold uppercase pb-4">
+                class="text-yellow-700 text-sm font-bold uppercase pb-4">
                 {{ $category->title }}
             </a>
             @endforeach

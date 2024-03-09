@@ -9,7 +9,7 @@
       @foreach ($posts as $post)
       <div class="w-full">
         <a href="{{route('view', $post)}}">
-          <h2 class="text-blue-500 font-bold text-lg sm:text-xl mb-2">
+          <h2 class="text-yellow-500 font-bold text-lg sm:text-xl mb-2">
             {!! preg_replace('/'.preg_quote(request()->get('search'), '/').'/i', '<span
               class="bg-yellow-300">$0</span>',
             $post->title) !!}

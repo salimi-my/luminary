@@ -12,7 +12,7 @@
                 <div class="bg-white flex flex-col justify-start p-6">
                     <div class="flex gap-4">
                         @foreach($post->categories as $category)
-                        <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">
+                        <a href="#" class="text-yellow-700 text-sm font-bold uppercase pb-4">
                             {{ $category->title }}
                         </a>
                         @endforeach
@@ -34,12 +34,12 @@
                 <livewire:like-dislike :post="$post" />
             </div>
 
-            <div class="w-full flex pt-6">
+            <div class="w-full flex pt-6 gap-2">
                 <div class="w-1/2">
                     @if ($prev)
                     <a href="{{ route('view', $prev) }}"
                         class="block w-full bg-white shadow hover:shadow-md text-left p-6">
-                        <p class="text-lg text-blue-800 font-bold flex items-center">
+                        <p class="text-lg text-yellow-500 font-bold flex items-center">
                             <i class="fa-solid fa-arrow-left pr-1"></i>
                             Previous
                         </p>
@@ -53,7 +53,7 @@
                     @if ($next)
                     <a href="{{ route('view', $next) }}"
                         class="block w-full bg-white shadow hover:shadow-md text-right p-6">
-                        <p class="text-lg text-blue-800 font-bold flex items-center justify-end">
+                        <p class="text-lg text-yellow-500 font-bold flex items-center justify-end">
                             Next
                             <i class="fa-solid fa-arrow-right pl-1"></i>
                         </p>
