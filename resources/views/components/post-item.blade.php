@@ -4,7 +4,7 @@
         <img src="{{ $post->postThumbnail() }}" alt="{{ $post->title }}" class="aspect-[4/3] object-cover">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
-        <div class="flex gap-4">
+        <div class="flex gap-4 min-h-[36px]">
             @foreach($post->categories as $category)
             <a href="{{ route('by-category', $category->slug) }}"
                 class="text-blue-700 text-sm font-bold uppercase pb-4">
@@ -12,7 +12,7 @@
             </a>
             @endforeach
         </div>
-        <a href="{{ route('view', $post) }}" class="text-3xl font-bold hover:text-gray-700 mb-4 line-clamp-2">
+        <a href="{{ route('view', $post) }}" class="text-3xl font-bold hover:text-gray-700 mb-4 line-clamp-1">
             {{ $post->title }}
         </a>
         @if ($showAuthor)
@@ -21,8 +21,10 @@
             $post->postDate() }} | {{ $post->post_read_time }}
         </p>
         @endif
-        <a href="{{ route('view', $post) }}" class="pb-6">
-            {{ $post->excerpt() }}
+        <a href="{{ route('view', $post) }}" class="pb-6 min-h-[144px]">
+            <span class="line-clamp-5">
+                {{ $post->excerpt() }}
+            </span>
         </a>
         <a href="{{ route('view', $post) }}" class="uppercase text-gray-800 hover:text-black">
             Continue Reading <i class="fa-solid fa-arrow-right"></i>
