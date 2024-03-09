@@ -28,9 +28,11 @@
                         {!! $post->body !!}
                     </div>
 
-                    <livewire:like-dislike :post="$post" />
                 </div>
             </article>
+            <div class="w-full flex justify-center mt-2">
+                <livewire:like-dislike :post="$post" />
+            </div>
 
             <div class="w-full flex pt-6">
                 <div class="w-1/2">
