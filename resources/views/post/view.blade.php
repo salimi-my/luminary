@@ -7,9 +7,8 @@
 
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
-                <a href="#" class="hover:opacity-75">
-                    <img src="{{ $post->postThumbnail() }}" alt="{{ $post->title }}">
-                </a>
+                <img src="{{ $post->postThumbnail() }}" alt="{{ $post->title }}"
+                    class="w-full aspect-[5/3] object-cover">
                 <div class="bg-white flex flex-col justify-start p-6">
                     <div class="flex gap-4">
                         @foreach($post->categories as $category)
