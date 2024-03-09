@@ -24,7 +24,7 @@
                     By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>,
                     Published on {{ $post->postDate() }} | {{ $post->post_read_time }}
                 </p>
-                <div>
+                <div class="post-body">
                     {!! $post->body !!}
                 </div>
 

@@ -7,10 +7,14 @@
 @tailwind components;
 @tailwind utilities;
 
-pre {
-    @apply p-4 bg-gray-800 rounded-lg text-white mb-4;
-}
-
 .font-family-karla {
     font-family: karla;
+}
+
+.post-body pre {
+    @apply p-4 bg-gray-800 rounded-lg text-white mb-6;
+}
+
+.post-body p {
+    @apply mb-6;
 }
