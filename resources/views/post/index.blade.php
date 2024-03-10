@@ -1,16 +1,20 @@
 <x-app-layout :meta-title="($category->title.' Posts' ?: 'All Posts') . ' — Luminary'"
   meta-description="Discover brilliant perspectives on diverse insights at Luminary. Thought-provoking content covering a wide range of topics.">
 
-  <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+  <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row py-6 gap-4 max-xl:px-3">
 
-    @foreach ($posts as $post)
-    <x-post-item :post="$post" />
-    @endforeach
+    <section class="w-full md:w-2/3 flex flex-col items-center">
 
-    {{ $posts->onEachSide(1)->links() }}
+      @foreach ($posts as $post)
+      <x-post-item :post="$post" />
+      @endforeach
 
-  </section>
+      {{ $posts->onEachSide(1)->links() }}
 
-  <x-sidebar />
+    </section>
+
+    <x-sidebar />
+
+  </div>
 
 </x-app-layout>
