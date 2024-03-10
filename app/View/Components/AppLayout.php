@@ -15,7 +15,7 @@ class AppLayout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public ?string $metaTitle = null, public ?string $metaDescription = null)
+    public function __construct(public ?string $metaTitle = null, public ?string $metaDescription = null, public ?string $metaImage = null)
     {
         $this->categories = Category::query()
             ->join('category_post', 'categories.id', '=', 'category_post.category_id')

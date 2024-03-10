@@ -2,12 +2,31 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
     <title>{{ $metaTitle ?: 'Luminary — Brilliant perspectives on diverse insights' }}</title>
-    <meta name="author" content="">
-    <meta name="title" content="{{ $metaTitle ?: 'Luminary — Brilliant perspectives on diverse insights' }}">
-    <meta name="description" content="{{ $metaDescription }}">
+    <meta name="title" content="{{ $metaTitle ?: 'Luminary — Brilliant perspectives on diverse insights' }}" />
+    <meta name="description"
+        content="{{ $metaDescription ?: 'Discover brilliant perspectives on diverse insights at Luminary. Thought-provoking content covering a wide range of topics.' }}" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:title" content="{{ $metaTitle ?: 'Luminary — Brilliant perspectives on diverse insights' }}" />
+    <meta property="og:description"
+        content="{{ $metaDescription ?: 'Discover brilliant perspectives on diverse insights at Luminary. Thought-provoking content covering a wide range of topics.' }}" />
+    <meta property="og:image" content="{{ $metaImage ?: url('/luminary-meta-image.png') }}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ url()->current() }}" />
+    <meta property="twitter:title"
+        content="{{ $metaTitle ?: 'Luminary — Brilliant perspectives on diverse insights' }}" />
+    <meta property="twitter:description"
+        content="{{ $metaDescription ?: 'Discover brilliant perspectives on diverse insights at Luminary. Thought-provoking content covering a wide range of topics.' }}" />
+    <meta property="twitter:image" content="{{ $metaImage ?: url('/luminary-meta-image.png') }}" />
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');

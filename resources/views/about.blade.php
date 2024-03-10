@@ -1,5 +1,6 @@
 <x-app-layout meta-title="About Us — Luminary"
-  meta-description="Explore our diverse perspectives and thought-provoking content covering a wide range of topics.">
+  meta-description="Explore our diverse perspectives and thought-provoking content covering a wide range of topics."
+  :meta-image="url('/storage/'.$widget->image)">
 
   <section class="w-full max-w-7xl mx-auto flex flex-col items-center max-xl:px-3">
 

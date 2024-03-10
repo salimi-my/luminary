@@ -1,5 +1,6 @@
 <x-app-layout :meta-title="($post->meta_title ?: $post->title) . ' — Luminary'"
-    :meta-description="$post->meta_description ?: $post->excerpt() ?: $post->body">
+    :meta-description="$post->meta_description ?: $post->excerpt() ?: $post->body"
+    :meta-image="url($post->postThumbnail())">
 
     <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row py-6 gap-4 max-xl:px-3">
         <!-- Post Section -->
