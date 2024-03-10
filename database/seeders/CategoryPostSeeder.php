@@ -16,7 +16,9 @@ class CategoryPostSeeder extends Seeder
         for ($i = 1; $i <= 50; $i++) {
             DB::table('category_post')->insert([
                 'category_id' => fake()->numberBetween(1, 4),
-                'post_id' => $i
+                'post_id' => $i,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }
