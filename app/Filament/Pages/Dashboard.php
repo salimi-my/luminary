@@ -8,7 +8,7 @@ use Filament\Widgets\FilamentInfoWidget;
 
 class Dashboard extends BaseDashboard
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
 
     protected static string $view = 'filament.pages.dashboard';
 
