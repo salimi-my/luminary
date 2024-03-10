@@ -67,28 +67,28 @@
     <!-- Topic Nav -->
     <nav class="w-full py-4 border-t border-b border-yellow-400/10 bg-yellow-300/5" x-data="{ open: false }">
         <div class="block sm:hidden">
-            <a href="#" class="md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
+            <a href="#" class="md:hidden text-base font-bold uppercase text-left flex justify-start items-center px-4"
                 @click="open = !open">
-                Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fa-solid ml-2"></i>
+                <i :class="open ? 'fa-xmark': 'fa-bars'" class="fa-solid mr-2"></i> Menu
             </a>
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
             <div
                 class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-between text-sm font-bold uppercase mt-0 px-6 py-2">
-                <div>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2">
                     <a href="{{ route('home') }}"
-                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2 {{ request()->routeIs('home') ? 'text-yellow-500' : ''}}">Home</a>
+                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 {{ request()->routeIs('home') ? 'text-yellow-500' : ''}}">Home</a>
                     @foreach ($categories as $category)
                     <a href="{{ route('by-category', $category->slug) }}"
-                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2 {{ request('category')?->slug == $category->slug ? 'text-yellow-500' : ''}}">{{
+                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 {{ request('category')?->slug == $category->slug ? 'text-yellow-500' : ''}}">{{
                         $category->title }}</a>
                     @endforeach
                     <a href="{{ route('about-us') }}"
-                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2 {{ request()->routeIs('about-us') ? 'text-yellow-500' : ''}}">About
+                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 {{ request()->routeIs('about-us') ? 'text-yellow-500' : ''}}">About
                         Us</a>
                 </div>
 
-                <div class="flex items-center">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2">
                     <form method="get" action="{{ route('search') }}">
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -105,7 +105,7 @@
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="hover:bg-primary transition-color ease-in-out duration-200 flex items-center rounded py-2 px-4 mx-2">
+                                    class="hover:bg-primary transition-color ease-in-out duration-200 flex items-center rounded py-2 px-4">
                                     <div>{{ Auth::user()->name }}</div>
 
                                     <div class="ms-1">
@@ -138,9 +138,9 @@
                     </div>
                     @else
                     <a href="{{ route('login') }}"
-                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">Login</a>
+                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4">Login</a>
                     <a href="{{ route('register') }}"
-                        class="bg-primary hover:bg-yellow-400 transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">Register</a>
+                        class="bg-primary hover:bg-yellow-400 transition-color ease-in-out duration-200 rounded py-2 px-4">Register</a>
                     @endauth
                 </div>
             </div>
