@@ -83,18 +83,18 @@
         </div>
     </header>
 
-    <!-- Topic Nav -->
+    <!-- Menu Nav -->
     <nav class="w-full py-4 border-t border-b border-yellow-400/10 bg-yellow-300/5" x-data="{ open: false }">
-        <div class="block sm:hidden">
-            <a href="#" class="md:hidden text-base font-bold uppercase text-left flex justify-start items-center px-4"
+        <div class="block lg:hidden">
+            <a href="#" class="lg:hidden text-base font-bold uppercase text-left flex justify-start items-center px-4"
                 @click="open = !open">
                 <i :class="open ? 'fa-xmark': 'fa-bars'" class="fa-solid mr-2"></i> Menu
             </a>
         </div>
-        <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
+        <div :class="open ? 'block': 'hidden'" class="w-full flex-grow lg:flex lg:items-center lg:w-auto">
             <div
-                class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-between text-sm font-bold uppercase mt-0 px-6 py-2">
-                <div class="flex flex-col md:flex-row justify-center items-center gap-2">
+                class="w-full container mx-auto flex flex-col lg:flex-row max-lg:gap-2 items-center justify-between text-sm font-bold uppercase mt-0 px-6 py-2">
+                <div class="flex flex-col lg:flex-row justify-center items-center gap-2">
                     <a href="{{ route('home') }}"
                         class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 {{ request()->routeIs('home') ? 'text-yellow-500' : ''}}">Home</a>
                     @foreach ($categories as $category)
@@ -107,20 +107,20 @@
                         Us</a>
                 </div>
 
-                <div class="flex flex-col md:flex-row justify-center items-center gap-2">
+                <div class="flex flex-col lg:flex-row justify-center items-center gap-2">
                     <form method="get" action="{{ route('search') }}">
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <x-heroicon-o-magnifying-glass class="w-5 h-5 text-gray-500" />
                             </div>
                             <input name="search" value="{{ request()->get('search') }}"
-                                class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-yellow-300 placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:ring-inset sm:text-sm sm:leading-6 font-medium pl-10"
+                                class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-yellow-300 placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:ring-inset lg:text-sm lg:leading-6 font-medium pl-10"
                                 placeholder="Search..." />
                         </div>
                     </form>
 
                     @auth
-                    <div class="flex sm:items-center sm:ms-6">
+                    <div class="flex lg:items-center lg:ms-6">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
