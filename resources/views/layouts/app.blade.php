@@ -28,7 +28,7 @@
 
             <nav>
                 <ul class="flex items-center justify-between font-bold text-sm text-black uppercase no-underline">
-                    <li><a class="hover:text-black/90 hover:underline px-4" href="#">Shop</a></li>
+                    <li><a class="hover:text-black/90 hover:underline px-4" href="#">Blog</a></li>
                     <li><a class="hover:text-black/90 hover:underline px-4" href="{{ route('about-us') }}">About</a>
                     </li>
                 </ul>
@@ -77,14 +77,14 @@
                 class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-between text-sm font-bold uppercase mt-0 px-6 py-2">
                 <div>
                     <a href="{{ route('home') }}"
-                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">Home</a>
+                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2 {{ request()->routeIs('home') ? 'text-yellow-500' : ''}}">Home</a>
                     @foreach ($categories as $category)
                     <a href="{{ route('by-category', $category->slug) }}"
-                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">{{
+                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2 {{ request('category')?->slug == $category->slug ? 'text-yellow-500' : ''}}">{{
                         $category->title }}</a>
                     @endforeach
                     <a href="{{ route('about-us') }}"
-                        class="hover:bg-primary transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2">About
+                        class="hover:bg-primary hover:text-black transition-color ease-in-out duration-200 rounded py-2 px-4 mx-2 {{ request()->routeIs('about-us') ? 'text-yellow-500' : ''}}">About
                         Us</a>
                 </div>
 
