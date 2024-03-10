@@ -59,7 +59,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create posts
-        Post::factory(50)->create();
+        Post::factory(50)->create([
+            'active' => true,
+        ]);
 
         // Create users
         User::factory()->create([
