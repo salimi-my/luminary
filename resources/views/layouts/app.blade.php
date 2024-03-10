@@ -154,10 +154,23 @@
 
     </div>
 
-    <footer class="w-full border-t bg-white pb-12">
+    <footer class="w-full border-t bg-white py-12">
         <div class="w-full container mx-auto flex flex-col items-center">
-            <div class="uppercase py-6">&copy; Luminary
-                <?php echo date('Y'); ?>. Created by Salimi
+            <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
+                <a href="{{ route('about-us') }}"
+                    class="uppercase px-3 hover:text-yellow-500 transition-color ease-in-out duration-200">About Us</a>
+                <a href="#"
+                    class="uppercase px-3 hover:text-yellow-500 transition-color ease-in-out duration-200">Privacy
+                    Policy</a>
+                <a href="#" class="uppercase px-3 hover:text-yellow-500 transition-color ease-in-out duration-200">Terms
+                    & Conditions</a>
+                <a href="#"
+                    class="uppercase px-3 hover:text-yellow-500 transition-color ease-in-out duration-200">Contact
+                    Us</a>
+            </div>
+            <div class="uppercase pb-6">&copy; Luminary
+                <?php echo date('Y'); ?>. Created by <a href="https://www.salimi.my" target="_blank" rel="noopener"
+                    class="hover:underline hover:text-yellow-500 transition-color ease-in-out duration-200">Salimi</a>
             </div>
         </div>
     </footer>
