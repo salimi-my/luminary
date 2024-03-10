@@ -85,5 +85,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $adminUser->assignRole($adminRole);
+
+        // Call the seeders
+        $this->call([
+            CategoryPostSeeder::class
+        ]);
     }
 }
