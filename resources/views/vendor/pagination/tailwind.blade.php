@@ -38,7 +38,7 @@
                 {{-- Previous Page Link --}}
                 @if (!$paginator->onFirstPage())
                 <a href="{{ $paginator->previousPageUrl() }}" rel="prev"
-                    class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center mr-3"
+                    class="h-10 w-10 font-semibold text-gray-800 hover:text-yellow-500 text-sm flex items-center justify-center mr-3"
                     aria-label="{{ __('pagination.previous') }}">
                     <i class="fa-solid fa-arrow-left mr-2"></i>
                     Prev
@@ -62,12 +62,12 @@
                 @if ($page == $paginator->currentPage())
                 <span aria-current="page">
                     <span
-                        class="h-10 w-10 bg-yellow-800 hover:bg-yellow-600 font-semibold text-white text-sm flex items-center justify-center">{{
+                        class="h-10 w-10 bg-primary hover:bg-yellow-400 font-semibold text-sm flex items-center justify-center">{{
                         $page }}</span>
                 </span>
                 @else
                 <a href="{{ $url }}"
-                    class="h-10 w-10 font-semibold text-gray-800 hover:bg-yellow-600 hover:text-white text-sm flex items-center justify-center"
+                    class="h-10 w-10 font-semibold text-gray-800 hover:bg-yellow-400 text-sm flex items-center justify-center"
                     aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
                     {{ $page }}
                 </a>
@@ -79,7 +79,7 @@
                 {{-- Next Page Link --}}
                 @if ($paginator->hasMorePages())
                 <a href="{{ $paginator->nextPageUrl() }}" rel="next"
-                    class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3"
+                    class="h-10 w-10 font-semibold text-gray-800 hover:text-yellow-500 text-sm flex items-center justify-center ml-3"
                     aria-label="{{ __('pagination.next') }}">
                     Next
                     <i class="fa-solid fa-arrow-right ml-2"></i>
