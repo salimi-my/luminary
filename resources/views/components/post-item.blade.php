@@ -18,7 +18,7 @@
         @if ($showAuthor)
         <p class="text-sm pb-3">
             By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>, Published on {{
-            $post->postDate() }} | {{ $post->post_read_time }}
+            $post->postDate() }} &nbsp;&bull;&nbsp; {{ $post->post_read_time }}
         </p>
         @endif
         <a href="{{ route('view', $post) }}" class="pb-6 {{ $showAuthor ? '' : 'min-h-[144px]' }}">
