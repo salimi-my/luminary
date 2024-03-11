@@ -22,6 +22,8 @@ class TextWidgetResource extends Resource
 
     protected static ?string $navigationGroup = 'Content';
 
+    protected static ?string $navigationLabel = 'Widgets';
+
     public static function form(Form $form): Form
     {
         return $form
