@@ -23,7 +23,7 @@
           @php
           $keyword = request()->get('search');
           $body = $post->body;
-          $pattern = '/\b' . preg_quote($keyword, '/') . '\b/i';
+          $pattern = '/\w*' . preg_quote($keyword, '/') . '\w*/i';
           $matches = [];
           preg_match_all($pattern, $body, $matches, PREG_OFFSET_CAPTURE);
           if (count($matches[0]) > 0) {
