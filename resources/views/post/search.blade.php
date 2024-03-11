@@ -1,4 +1,4 @@
-<x-app-layout :meta-title="('Search: '.$search ?: 'All Posts') . ' — Luminary'"
+<x-app-layout :meta-title="('Search: '.$keyword ?: 'All Posts') . ' — Luminary'"
   meta-description="Discover brilliant perspectives on diverse insights at Luminary. Thought-provoking content covering a wide range of topics.">
 
   <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row py-6 gap-4 max-xl:px-3">
@@ -10,18 +10,18 @@
       <div class="w-full">
         <a href="{{route('view', $post)}}">
           <h2 class="text-yellow-500 font-bold text-lg sm:text-xl mb-2">
-            {!! preg_replace('/'.preg_quote(request()->get('search'), '/').'/i', '<span
+            {!! preg_replace('/'.preg_quote(request()->get('keyword'), '/').'/i', '<span
               class="bg-yellow-300">$0</span>',
             $post->title) !!}
           </h2>
         </a>
         <div>
-          @if (stripos($post->excerpt(), request()->get('search')) !== false)
-          {!! preg_replace('/'.preg_quote(request()->get('search'), '/').'/i', '<span class="bg-yellow-300">$0</span>',
+          @if (stripos($post->excerpt(), request()->get('keyword')) !== false)
+          {!! preg_replace('/'.preg_quote(request()->get('keyword'), '/').'/i', '<span class="bg-yellow-300">$0</span>',
           $post->excerpt()) !!}
           @else
           @php
-          $keyword = request()->get('search');
+          $keyword = request()->get('keyword');
           $body = $post->body;
           $pattern = '/\w*' . preg_quote($keyword, '/') . '\w*/i';
           $matches = [];
@@ -42,7 +42,7 @@
 
       @else
 
-      <p class="text-center text-gray-700">No results found for "{{ request()->get('search') }}".</p>
+      <p class="text-center text-gray-700">No results found for "{{ request()->get('keyword') }}".</p>
 
       @endif
 

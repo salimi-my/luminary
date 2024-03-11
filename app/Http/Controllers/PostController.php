@@ -249,18 +249,18 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->get('search');
+        $keyword = $request->get('keyword');
 
         $posts = Post::where('active', '=', true)
             ->whereDate('published_at', '<=', now())
-            ->where(function ($query) use ($search) {
-                $query->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('body', 'like', '%' . $search . '%');
+            ->where(function ($query) use ($keyword) {
+                $query->where('title', 'like', '%' . $keyword . '%')
+                    ->orWhere('body', 'like', '%' . $keyword . '%');
             })
             ->orderBy('published_at', 'desc')
             ->paginate(10)
             ->withQueryString();
 
-        return view('post.search', compact('posts', 'search'));
+        return view('post.search', compact('posts', 'keyword'));
     }
 }
