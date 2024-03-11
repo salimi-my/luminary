@@ -2,9 +2,9 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Widgets\PostsViewsChart;
+use App\Filament\Widgets\StatsOverview;
 use Filament\Pages\Dashboard as BaseDashboard;
-use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 
 class Dashboard extends BaseDashboard
 {
@@ -15,8 +15,8 @@ class Dashboard extends BaseDashboard
     protected function getHeaderWidgets(): array
     {
         return [
-            AccountWidget::class,
-            FilamentInfoWidget::class,
+            StatsOverview::class,
+            PostsViewsChart::class,
         ];
     }
 }
