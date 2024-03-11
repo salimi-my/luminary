@@ -35,7 +35,7 @@
                 <livewire:like-dislike :post="$post" />
             </div>
 
-            <div class="w-full flex pt-6 gap-2">
+            <div class="w-full flex pt-6 gap-1">
                 <div class="w-1/2">
                     @if ($prev)
                     <a href="{{ route('view', $prev) }}"
