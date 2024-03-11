@@ -90,7 +90,8 @@ class DatabaseSeeder extends Seeder
 
         // Call the seeders
         $this->call([
-            CategoryPostSeeder::class
+            CategoryPostSeeder::class,
+            PostViewSeeder::class,
         ]);
     }
 }
