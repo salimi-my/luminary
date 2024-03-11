@@ -258,7 +258,8 @@ class PostController extends Controller
                     ->orWhere('body', 'like', '%' . $search . '%');
             })
             ->orderBy('published_at', 'desc')
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
         return view('post.search', compact('posts', 'search'));
     }
