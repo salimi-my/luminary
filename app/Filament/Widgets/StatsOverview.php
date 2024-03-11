@@ -18,15 +18,18 @@ class StatsOverview extends BaseWidget
         $totalDislikes = LikeDislike::where('is_like', '=', false)->count();
 
         return [
-            Stat::make('Total Posts', $totalPosts)
+            Stat::make('Posts', $totalPosts)
                 ->icon('heroicon-o-document-text')
-                ->description('32k increase'),
-            Stat::make('Posts Views', $totalViews)
-                ->icon('heroicon-o-eye'),
-            Stat::make('Total Likes', $totalLikes)
-                ->icon('heroicon-o-hand-thumb-up'),
-            Stat::make('Total Dislikes', $totalDislikes)
-                ->icon('heroicon-o-hand-thumb-down'),
+                ->description('Total posts created'),
+            Stat::make('Views', $totalViews)
+                ->icon('heroicon-o-eye')
+                ->description('Total posts views'),
+            Stat::make('Likes', $totalLikes)
+                ->icon('heroicon-o-hand-thumb-up')
+                ->description('Total likes received'),
+            Stat::make('Dislikes', $totalDislikes)
+                ->icon('heroicon-o-hand-thumb-down')
+                ->description('Total dislikes received'),
         ];
     }
 }
