@@ -9,7 +9,9 @@ class PostsViewsChart extends ChartWidget
 {
     protected static ?string $heading = 'Posts Views';
 
-    protected int | string | array $columnSpan = 2;
+    protected int | string | array $columnSpan = [
+        'xl' => 2
+    ];
 
     protected static ?string $maxHeight = '365px';
 
